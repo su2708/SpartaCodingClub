@@ -60,6 +60,7 @@
         margin-left: 30px;
       }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
 
   <body>
@@ -71,9 +72,10 @@
       />
       <div class="weather">
         <img
+          id="weather_icon"
           src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
         />
-        <p>날씨 맑음, 20ºC</p>
+        <p id="weather_temp">날씨 맑음, 20ºC</p>
       </div>
     </nav>
 
@@ -90,10 +92,23 @@
     </div>
 
     <div class="footer">
-      <p>- 작자 미상 -</p>
-      <p>멋진 명언입니다. 아이스크림을 먹으면 행복해져요.</p>
+      <p id="quoteAuthor">- 작자 미상 -</p>
+      <p id="quoteContent">멋진 명언입니다. 아이스크림을 먹으면 행복해져요.</p>
     </div>
     <script>
+      // 날씨
+      let weather_url = "http://spartacodingclub.shop/sparta_api/weather/seoul";
+      fetch(weather_url)
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          let weather_icon = data["icon"];
+          let weather_temp = data["temp"] + "ºC";
+
+          $("#weather_icon").attr("src", `${weather_icon}`);
+          $("#weather_temp").text(weather_temp);
+        });
+
       // 시간 ChatGPT
       function displayCurrentTime() {
         var currentTime = new Date();
@@ -121,6 +136,21 @@
 
       // Call the displayCurrentTime function every second to update the time
       setInterval(displayCurrentTime, 1000);
+
+      // 명언
+      let url = "https://api.quotable.io/random";
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          let author = data["author"];
+          let content = data["content"];
+
+          let authorMsg = `- ${author} -`;
+          let contentMsg = `" ${content} "`;
+
+          $("#quoteAuthor").text(authorMsg);
+          $("#quoteContent").text(contentMsg);
+        });
     </script>
   </body>
 </html>
