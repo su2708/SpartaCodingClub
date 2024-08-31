@@ -38,13 +38,29 @@ def mypage():
 @app.route("/movie")
 def movie():
     query = request.args.get('query') # 검색어
-    URL = f"http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=f5eef3421c602c6cb7ea224104795888&movieNm={query}" # URL
+    URL = f"http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=b62068161da951a713de22de3eb0da22&movieNm={query}" # URL
 
     res = requests.get(URL)
     rjson = res.json()
     movie_list = rjson["movieListResult"]["movieList"]
 		
     return render_template("movie.html", data=movie_list)
+
+@app.route("/answer")
+def answer():
+    if request.args.get('query'):
+        query = request.args.get('query')
+    else:
+        query = '20230601'
+        
+    URL = f"http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=b62068161da951a713de22de3eb0da22&targetDt={query}"
+
+    res = requests.get(URL)
+    rjson = res.json()
+    # print(rjson.get('boxOfficeResult').get('weeklyBoxOfficeList'))
+    movieList = rjson.get('boxOfficeResult').get('weeklyBoxOfficeList')
+
+    return render_template("answer.html", data=movieList)
 
 if __name__ == '__main__':  
     app.run(debug=True)
