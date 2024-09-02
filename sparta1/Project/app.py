@@ -15,7 +15,16 @@ def home():
         "name": name,
         "motto": motto
     }
-    return render_template("motto.html", data = context)
+    return render_template("motto.html", data=context)
+
+@app.route("/iloveyou/<name>/")
+def iloveyou(name):
+    motto = f"{name}, 난 너뿐이야..."
+    context = {
+        "name": name,
+        "motto": motto
+    }
+    return render_template("motto.html", data=context)
 
 @app.route("/music/")
 def music():
