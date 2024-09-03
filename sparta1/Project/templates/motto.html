@@ -16,6 +16,12 @@
             color: white;
         }
 
+        /* .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        } */
+
         .weather {
             display: flex;
             align-items: center;
@@ -56,17 +62,18 @@
             height: 32px;
             margin-left: 30px;
         }
-				@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
         * {
             font-family: 'Poppins', sans-serif;
-        }
+        } 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
-    <!-- navbar of music -->
+    <!-- music의 navbar -->
     <nav class="navbar border-bottom border-bottom-dark d-flex justify-content-space-between" data-bs-theme="dark">
         <div class="ms-3">
             <img src="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/webjong/images/sparta-logo.svg" alt="">
@@ -94,16 +101,16 @@
                     </ul>
                 </div>
             </div>
-            <div class="weather">
-                <img id="weather-icon">
-                <p id="weather-msg"></p>
-            </div>
         </nav>
+        <div class="weather">
+            <img id="weather-icon">
+            <p id="weather-msg"></p>
+        </div>
     </nav>
 
     <div class="container">
         <div class="greeting">
-            <h1>Hello, {{ data.name }}!</h1>
+            <h1>Hello, {{ data.name }}</h1>
             <h1 id="current-time"></h1>
         </div>
 

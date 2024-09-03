@@ -8,27 +8,28 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    name = '윤수용'
-    motto = '행복해서 웃는 게 아니라 웃어서 행복해지는 겁니다.'
-    
-    context = {
-        "name": name,
-        "motto": motto
-    }
-    return render_template("motto.html", data=context)
+    name = '최지웅'
+    motto = "행복해서 웃는게 아니라 웃어서 행복합니다."
 
-@app.route("/iloveyou/<name>/")
-def iloveyou(name):
-    motto = f"{name}, 난 너뿐이야..."
     context = {
         "name": name,
-        "motto": motto
+        "motto": motto,
     }
-    return render_template("motto.html", data=context)
+    return render_template('motto.html', data=context)
 
 @app.route("/music/")
 def music():
-    return render_template("music.html")
+    return render_template('music.html')
+
+@app.route("/iloveyou/<name>/")
+def iloveyou(name):
+    motto = f"{name}야 난 너뿐이야!"
+
+    context = {
+        'name': name,
+        'motto': motto,
+    }
+    return render_template('motto.html', data=context)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8080)
+    app.run(debug=True)
