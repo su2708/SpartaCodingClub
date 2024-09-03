@@ -32,7 +32,7 @@ with app.app_context():
 
 @app.route("/")
 def home():
-    name = '최지웅'
+    name = '윤수용'
     motto = "행복해서 웃는게 아니라 웃어서 행복합니다."
 
     context = {
