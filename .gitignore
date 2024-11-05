@@ -3,3 +3,5 @@ main_camp/trusted_list
 main_camp/ch3_AI_model_utilization/huggingface-transformers-33868a0
 main_camp/ch3_AI_model_utilization/.env
 main_camp/ch3_AI_model_utilization/output_audio.mp3
+main_camp/ch3_AI_model_utilization/yolov8n.pt
+main_camp/ch3_AI_model_utilization/yolov8x.pt
