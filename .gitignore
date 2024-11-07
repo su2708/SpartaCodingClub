@@ -1,3 +1,25 @@
+# ch1_python
+main_camp/ch1_python/conda-meta
+main_camp/ch1_python/DLLs
+main_camp/ch1_python/etc
+main_camp/ch1_python/include
+main_camp/ch1_python/Lib
+main_camp/ch1_python/Library
+main_camp/ch1_python/libs
+main_camp/ch1_python/Scripts
+main_camp/ch1_python/share
+main_camp/ch1_python/Tools
+main_camp/ch1_python/.nonadmin
+main_camp/ch1_python/*.dll
+main_camp/ch1_python/*.pdb
+main_camp/ch1_python/LICENSE_PYTHON.txt
+main_camp/ch1_python/pylupdate5.bat
+main_camp/ch1_python/pyrcc5.bat
+main_camp/ch1_python/pyuic5.bat
+main_camp/ch1_python/python.exe
+main_camp/ch1_python/pythonw.exe
+
+# ch2_basic_AI
 main_camp/ch2_basic_AI/models--gpt2
 main_camp/ch2_basic_AI/trusted_list
 main_camp/ch2_basic_AI/conda-meta
@@ -20,11 +42,3 @@ main_camp/ch2_basic_AI/pyuic5.bat
 main_camp/ch2_basic_AI/python.exe
 main_camp/ch2_basic_AI/pythonw.exe
 
-main_camp/ch2_basic_AI/ch2_basic_AI/data
-main_camp/ch2_basic_AI/ch2_basic_AI/data/cifar-10-python.tar.gz
-main_camp/ch2_basic_AI/ch2_basic_AI/datasets
-main_camp/ch2_basic_AI/ch2_basic_AI/huggingface-transformers-33868a0
-main_camp/ch2_basic_AI/ch2_basic_AI/.env
-main_camp/ch2_basic_AI/ch2_basic_AI/output_audio.mp3
-main_camp/ch2_basic_AI/ch2_basic_AI/yolov8n.pt
-main_camp/ch2_basic_AI/ch2_basic_AI/yolov8x.pt
