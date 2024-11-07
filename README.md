@@ -1,6 +1,6 @@
 # 스파르타 코딩클럽
 
-## pre_learning
+## pre_camp
 - 사전캠프 기간에 진행됐던 수업들
   - sql
   - python 기초
