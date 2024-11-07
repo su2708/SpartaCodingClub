@@ -1,10 +1,12 @@
 # ch1_python
 main_camp/ch1_python/conda-meta
+main_camp/ch2_basic_AI/cuda-doc
 main_camp/ch1_python/DLLs
 main_camp/ch1_python/etc
 main_camp/ch1_python/include
 main_camp/ch1_python/Lib
 main_camp/ch1_python/Library
+main_camp/ch2_basic_AI/libnvvp
 main_camp/ch1_python/libs
 main_camp/ch1_python/Scripts
 main_camp/ch1_python/share
@@ -32,6 +34,8 @@ main_camp/ch2_basic_AI/libs
 main_camp/ch2_basic_AI/Scripts
 main_camp/ch2_basic_AI/share
 main_camp/ch2_basic_AI/Tools
+main_camp/ch2_basic_AI/libnvvp
+main_camp/ch2_basic_AI/cuda-doc
 main_camp/ch2_basic_AI/.nonadmin
 main_camp/ch2_basic_AI/*.dll
 main_camp/ch2_basic_AI/*.pdb
