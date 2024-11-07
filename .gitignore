@@ -46,3 +46,25 @@ main_camp/ch2_basic_AI/pyuic5.bat
 main_camp/ch2_basic_AI/python.exe
 main_camp/ch2_basic_AI/pythonw.exe
 
+# ch3_RAG
+main_camp/ch3_RAG/conda-meta
+main_camp/ch3_RAG/cuda-doc
+main_camp/ch3_RAG/DLLs
+main_camp/ch3_RAG/etc
+main_camp/ch3_RAG/include
+main_camp/ch3_RAG/Lib
+main_camp/ch3_RAG/Library
+main_camp/ch3_RAG/libnvvp
+main_camp/ch3_RAG/libs
+main_camp/ch3_RAG/Scripts
+main_camp/ch3_RAG/share
+main_camp/ch3_RAG/Tools
+main_camp/ch3_RAG/.nonadmin
+main_camp/ch3_RAG/*.dll
+main_camp/ch3_RAG/*.pdb
+main_camp/ch3_RAG/LICENSE_PYTHON.txt
+main_camp/ch3_RAG/pylupdate5.bat
+main_camp/ch3_RAG/pyrcc5.bat
+main_camp/ch3_RAG/pyuic5.bat
+main_camp/ch3_RAG/python.exe
+main_camp/ch3_RAG/pythonw.exe
