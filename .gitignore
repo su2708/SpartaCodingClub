@@ -1,7 +1,10 @@
-main_camp/models--gpt2
-main_camp/trusted_list
-main_camp/ch3_AI_model_utilization/huggingface-transformers-33868a0
-main_camp/ch3_AI_model_utilization/.env
-main_camp/ch3_AI_model_utilization/output_audio.mp3
-main_camp/ch3_AI_model_utilization/yolov8n.pt
-main_camp/ch3_AI_model_utilization/yolov8x.pt
+main_camp/ch2_basic_AI/models--gpt2
+main_camp/ch2_basic_AI/trusted_list
+main_camp/ch2_basic_AI/ch2_basic_AI/data
+main_camp/ch2_basic_AI/ch2_basic_AI/data/cifar-10-python.tar.gz
+main_camp/ch2_basic_AI/ch2_basic_AI/datasets
+main_camp/ch2_basic_AI/ch2_basic_AI/huggingface-transformers-33868a0
+main_camp/ch2_basic_AI/ch2_basic_AI/.env
+main_camp/ch2_basic_AI/ch2_basic_AI/output_audio.mp3
+main_camp/ch2_basic_AI/ch2_basic_AI/yolov8n.pt
+main_camp/ch2_basic_AI/ch2_basic_AI/yolov8x.pt
