@@ -68,3 +68,26 @@ main_camp/ch3_RAG/pyrcc5.bat
 main_camp/ch3_RAG/pyuic5.bat
 main_camp/ch3_RAG/python.exe
 main_camp/ch3_RAG/pythonw.exe
+
+# ch4_WebService
+main_camp/ch4_WebService/conda-meta
+main_camp/ch4_WebService/cuda-doc
+main_camp/ch4_WebService/DLLs
+main_camp/ch4_WebService/etc
+main_camp/ch4_WebService/include
+main_camp/ch4_WebService/Lib
+main_camp/ch4_WebService/Library
+main_camp/ch4_WebService/libnvvp
+main_camp/ch4_WebService/libs
+main_camp/ch4_WebService/Scripts
+main_camp/ch4_WebService/share
+main_camp/ch4_WebService/Tools
+main_camp/ch4_WebService/.nonadmin
+main_camp/ch4_WebService/*.dll
+main_camp/ch4_WebService/*.pdb
+main_camp/ch4_WebService/LICENSE_PYTHON.txt
+main_camp/ch4_WebService/pylupdate5.bat
+main_camp/ch4_WebService/pyrcc5.bat
+main_camp/ch4_WebService/pyuic5.bat
+main_camp/ch4_WebService/python.exe
+main_camp/ch4_WebService/pythonw.exe
