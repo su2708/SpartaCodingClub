@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>My First Django PJT</title>
-    </head>
-    <body>
-        <h1>This is Users html</h1>
-        <p>It works!</p>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Users</title>
+{% endblock title %}
+
+{% block content %}
+    <h1>This is Users page.</h1>
+{% endblock content %}

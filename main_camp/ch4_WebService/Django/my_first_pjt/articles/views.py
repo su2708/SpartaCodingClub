@@ -6,3 +6,20 @@ def index(request):
 
 def users(request):
     return render(request, "users.html")
+
+def hello(request):
+    name = "Yun"
+    tags = ["#joyful", "#bright", "#cute"]
+    books = {
+        "today": "토지",
+        "yesterday": "태백산맥",
+        "tomorrow": "우정",
+    }
+    
+    context = {
+        "name": name,
+        "tags": tags,
+        "books": books,
+    }
+    
+    return render(request, "hello.html", context)
