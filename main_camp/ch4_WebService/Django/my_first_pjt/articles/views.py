@@ -23,3 +23,13 @@ def hello(request):
     }
     
     return render(request, "hello.html", context)
+
+def data_throw(request):
+    return render(request, "data-throw.html")
+
+def data_catch(request):
+    message = request.GET.get("message")
+    context = {
+        "message": message,
+    }
+    return render(request, "data-catch.html", context)

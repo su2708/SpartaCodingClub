@@ -25,4 +25,6 @@ urlpatterns = [
     path("index/", views.index),
     path("users/", views.users),
     path("hello/", views.hello),
+    path("data-throw/", views.data_throw),
+    path("data-catch/", views.data_catch),
 ]
