@@ -5,6 +5,14 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>My First Django Project</h1>
+    <h1>INDEX</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'hello' %}">Hello</a></li>
+            <li><a href="{% url 'data-throw' %}">Data Throw</a></li>
+            <li><a href="{% url 'users' %}">Users</a></li>
+        </ul>
+    </nav>
+
     <p>My first Django project is working!</p>
 {% endblock content %}

@@ -4,9 +4,6 @@ from django.shortcuts import render
 def index(request):
     return render(request, "index.html")
 
-def users(request):
-    return render(request, "users.html")
-
 def hello(request):
     name = "Yun"
     tags = ["#joyful", "#bright", "#cute"]
@@ -33,3 +30,4 @@ def data_catch(request):
         "message": message,
     }
     return render(request, "data-catch.html", context)
+

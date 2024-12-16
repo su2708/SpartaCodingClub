@@ -16,15 +16,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from articles import views
 
 # url에 따라 어떤 View로 가야하는지 결정
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("index/", views.index),
-    path("users/", views.users),
-    path("hello/", views.hello),
-    path("data-throw/", views.data_throw),
-    path("data-catch/", views.data_catch),
+    path("index/", views.index, name="index"),
+    path("articles/", include("articles.urls")),  # articles의 urls.py에서 마저 처리
+    path("users/", include("users.urls")),  # users의 urls.py에서 마저 처리 
 ]
