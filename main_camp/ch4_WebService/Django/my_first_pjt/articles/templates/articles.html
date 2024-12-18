@@ -9,15 +9,13 @@
 
     <a href="{% url 'new' %}">Create New Article</a>
 
-    <ul>
-        {% for article in articles %}
-            <li>
-                <div>글 번호: {{ article.id }}</div>
-                <div>글 제목: {{ article.title }}</div>
-                <div>글 내용: {{ article.content }}</div>
-                <hr>
-                <br/>
-            </li>
-        {% endfor %}
-    </ul>
+
+    {% for article in articles %}
+        <!-- article_detail에 필요한 인자인 article.pk를 같이 넘겨줌 -->
+        <a href="{% url 'article_detail' article.pk %}">
+            <p>[ {{ article.pk }} ] {{ article.title }}</p>
+        </a>
+        <br/>
+    {% endfor %}
+
 {% endblock content %}
