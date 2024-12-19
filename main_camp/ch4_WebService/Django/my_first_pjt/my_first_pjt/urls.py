@@ -24,5 +24,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("index/", views.index, name="index"),
     path("articles/", include("articles.urls")),  # articles의 urls.py에서 마저 처리
-    path("users/", include("users.urls")),  # users의 urls.py에서 마저 처리 
+    path("users/", include("users.urls")),  # users의 urls.py에서 마저 처리
+    path("accounts/", include("accounts.urls")),  # accounts의 urls.py에서 마저 처리
 ]
