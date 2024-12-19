@@ -14,8 +14,16 @@
                     {% csrf_token %}
                     <input type="submit" value="Logout"></input>
                 </form>
+
+                <a href="{% url 'accounts:update' %}"><button>User Update</button></a>
+
+                <form action="{% url 'accounts:delete' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Drop out"></input>
+                </form>
             {% else %}
                 <a href="{% url 'accounts:login' %}"><button>Login</button></a>
+                <a href="{% url 'accounts:signup' %}"><button>Sign Up</button></a>
             {% endif %}
 
         </div>

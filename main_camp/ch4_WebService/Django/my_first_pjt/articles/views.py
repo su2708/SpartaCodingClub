@@ -4,11 +4,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods, require_POST
 
-
 # Create your views here.
 def index(request):
     return render(request, "articles/index.html")
-
 
 def articles(request):
     # Article에 저장된 걸 다 가져와 id 내림차순으로 정렬
@@ -19,7 +17,6 @@ def articles(request):
     }
 
     return render(request, "articles/articles.html", context)
-
 
 def article_detail(request, pk):
     # Article에 저장된 목록 중에 pk==pk인 글 가져오기
@@ -72,10 +69,8 @@ def delete(request, pk):
         article.delete()
     return redirect("articles:articles")
 
-
 def data_throw(request):
     return render(request, "articles/data-throw.html")
-
 
 def data_catch(request):
     message = request.GET.get("message")
