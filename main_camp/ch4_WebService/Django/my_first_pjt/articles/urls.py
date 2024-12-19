@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = "articles"  # namespace 추가 
+
 urlpatterns = [
     path("", views.articles, name="articles"),
     path("create/", views.create, name="create"),  # 새로운 article 생성
