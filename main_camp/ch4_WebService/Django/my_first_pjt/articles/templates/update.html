@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Update Article</title>
+{% endblock title %}
+
+{% block content %}
+    <h1>Update Article</h1>
+
+    <form action="{% url 'update' article.pk %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">수정</button>
+    </form>
+
+    <br/>
+    <a href="{% url 'article_detail' article.pk %}">이전으로</a>
+
+{% endblock content %}

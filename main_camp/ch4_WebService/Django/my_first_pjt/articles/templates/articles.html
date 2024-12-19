@@ -7,8 +7,7 @@
 {% block content %}
     <h1>Articles</h1>
 
-    <a href="{% url 'new' %}">Create New Article</a>
-
+    <a href="{% url 'create' %}"><button>Create New Article</button></a>
 
     {% for article in articles %}
         <!-- article_detail에 필요한 인자인 article.pk를 같이 넘겨줌 -->

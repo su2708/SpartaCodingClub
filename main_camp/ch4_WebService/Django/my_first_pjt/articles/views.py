@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Article
+from .forms import ArticleForm
 
 # Create your views here.
 def index(request):
@@ -25,35 +26,34 @@ def article_detail(request, pk):
     
     return render(request, "article_detail.html", context)
 
-def new(request):
-    return render(request, "new.html")
-
 def create(request):
-    # GET 방식으로 전달된 데이터를 받아서
-    title = request.POST.get("title")
-    content = request.POST.get("content")
+    # 기존 create 함수 부분 
+    if request.method == "POST":
+        form = ArticleForm(request.POST)  # 데이터가 바인딩된(값이 채워진) Form 
+        if form.is_valid():  # Form이 유효하다면 데이터를 저장하고 다른 곳으로 redirect 
+            article = form.save()
+            return redirect("article_detail", article.pk)
+    # 기존 new 함수 부분 
+    else:
+        form = ArticleForm()
 
-    # 받은 데이터를 새로운 Article 모델을 이용해서 저장
-    article = Article.objects.create(title=title, content=content)
-    
-    # 작업이 다 끝나면 articles.html로 redirect 
-    return redirect('article_detail', article.pk)
-
-def edit(request, pk):
-    article = Article.objects.get(pk=pk)
-    context = {"article": article} 
-    return render(request, "edit.html", context)
+    context = {"form": form}
+    return render(request, "create.html", context)
 
 def update(request, pk):
-    title = request.POST.get("title")
-    content = request.POST.get("content")
-    
     article = Article.objects.get(pk=pk)
-    article.title = title
-    article.content = content
-    article.save()
-    
-    return redirect("article_detail", article.pk)
+    if request.method == "POST":
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            article = form.save()
+            return redirect("article_detail", article.pk)
+    else:
+        form = ArticleForm(instance=article)  # article의 값을 가지는 객체로 채워진 Form 
+    context = {
+        "form": form,
+        "article": article,
+    }
+    return render(request, "update.html", context)
 
 def delete(request, pk):
     # method == "POST" 인 경우에만 article 삭제 

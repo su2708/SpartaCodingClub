@@ -9,16 +9,7 @@
 
     <form action="{% url 'create' %}" method="POST">
         {% csrf_token %}
-        <label for="title">제목:</label>
-        <input type="text", id="title", name="title", placeholder="Enter messagaes.">
-        <br/>
-        <br/>
-
-        <label for="content">내용</label>
-        <textarea name="content" id="content" cols="30" rows="10"></textarea>
-        <br/>
-        <br/>
-
+        {{ form.as_p }}  <!-- form을 p 태그로 감싸겠다는 의미 -->
         <button type="submit">저장</button>
     </form>
 
