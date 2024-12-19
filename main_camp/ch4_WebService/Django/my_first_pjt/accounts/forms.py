@@ -11,7 +11,8 @@ class CustomUserChangeForm(UserChangeForm):
             "last_name",
             "email",
         ]
-        
+    
+    #  비밀번호 수정 경로를 커스텀 할 수 있도록 UserChangeForm의 __init__을 Overriding
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if self.fields.get("password"):

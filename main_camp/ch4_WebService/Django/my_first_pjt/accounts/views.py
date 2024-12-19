@@ -38,7 +38,7 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()  # 새로운 유저 회원가입 정보 저장 
-            auth_login(request, user)  # 새로 저장된 회원 정보로 로그인 
+            auth_login(request, user)  # 회원가입과 동시에 새 회원 정보로 로그인 
             return redirect("articles:index")
     else:
         form = UserCreationForm()
