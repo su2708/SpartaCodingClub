@@ -1,7 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
     <h1>INDEX</h1>
+
+    <img src="{% static 'articles/danger.png' %}">
+
     <nav>
         <ul>
             <li><a href="{% url 'articles:data-throw' %}">Data Throw</a></li>

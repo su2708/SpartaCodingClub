@@ -7,6 +7,10 @@ class Article(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image = models.ImageField(
+        upload_to="images/",
+        blank=True  # 이미지가 없어도 괜찮다는 의미 
+    )
 
     def __str__(self):
         return self.title

@@ -16,7 +16,11 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from django.urls.conf import include
+from django.conf import settings
+from django.conf.urls.static import static
+
 from articles import views
 
 # url에 따라 어떤 View로 가야하는지 결정
@@ -27,3 +31,6 @@ urlpatterns = [
     path("users/", include("users.urls")),  # users의 urls.py에서 마저 처리
     path("accounts/", include("accounts.urls")),  # accounts의 urls.py에서 마저 처리
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

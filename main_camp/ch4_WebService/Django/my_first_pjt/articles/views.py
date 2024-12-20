@@ -33,7 +33,7 @@ def article_detail(request, pk):
 def create(request):
     # 기존 create 함수 부분
     if request.method == "POST":
-        form = ArticleForm(request.POST)  # 데이터가 바인딩된(값이 채워진) Form
+        form = ArticleForm(request.POST, request.FILES)  # 데이터가 바인딩된(값이 채워진) Form
         if form.is_valid():  # Form이 유효하다면 데이터를 저장하고 다른 곳으로 redirect
             article = form.save()
             return redirect("articles:article_detail", article.pk)
