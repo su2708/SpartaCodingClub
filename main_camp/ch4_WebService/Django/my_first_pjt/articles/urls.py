@@ -9,6 +9,7 @@ urlpatterns = [
     path("<int:pk>/", views.article_detail, name="article_detail"),  # article 상세
     path("<int:pk>/delete/", views.delete, name="delete"),  # article 삭제
     path("<int:pk>/update/", views.update, name="update"),  # article 수정
+    path("<int:pk>/comments/", views.comments_create, name="comments_create"),  # 댓글 작성 
     #
     path("index/", views.index, name="index"),
     # data

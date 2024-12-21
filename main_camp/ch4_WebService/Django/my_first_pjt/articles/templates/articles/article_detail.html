@@ -24,4 +24,21 @@
         {% csrf_token %}
         <input type="submit" value="삭제">
     </form>
+
+    <br/>
+    <hr/>
+
+    <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <input type="submit" value="작성">
+    </form>
+
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <p>{{ comment.content }}</p>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock content %}

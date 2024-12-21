@@ -1,5 +1,5 @@
 from .models import Article
-from .forms import ArticleForm
+from .forms import ArticleForm, CommentForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods, require_POST
@@ -68,6 +68,16 @@ def delete(request, pk):
         article = get_object_or_404(Article, pk=pk)
         article.delete()
     return redirect("articles:articles")
+
+@require_POST
+def comment_create(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        comment = form.save(commit=False)  # instance를 생성하지만 바로 DB에 저장되지 않도록 commit=False 
+        comment.article = article
+        comment.save()
+    return redirect("articles:article_detail", article.pk)
 
 def data_throw(request):
     return render(request, "articles/data-throw.html")
