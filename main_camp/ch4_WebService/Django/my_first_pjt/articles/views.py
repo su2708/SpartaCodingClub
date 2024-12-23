@@ -23,7 +23,7 @@ def article_detail(request, pk):
     # 없으면 404 error
     article = get_object_or_404(Article, pk=pk)
     comment_form = CommentForm()  # 댓글 폼 
-    comments = article.comments.all()  # 댓글 보여주기 
+    comments = article.comments.all().order_by("-pk")  # 최신 순으로 댓글 보여주기 
     context = {
         "article": article,
         "comment_form": comment_form,
@@ -38,7 +38,9 @@ def create(request):
     if request.method == "POST":
         form = ArticleForm(request.POST, request.FILES)  # 데이터가 바인딩된(값이 채워진) Form
         if form.is_valid():  # Form이 유효하다면 데이터를 저장하고 다른 곳으로 redirect
-            article = form.save()
+            article = form.save(commit=False)
+            article.author = request.user
+            article.save()
             return redirect("articles:article_detail", article.pk)
     # 기존 new 함수 부분
     else:
@@ -51,25 +53,30 @@ def create(request):
 @require_http_methods(["GET", "POST"])
 def update(request, pk):
     article = get_object_or_404(Article, pk=pk)
-    if request.method == "POST":
-        form = ArticleForm(request.POST, instance=article)
-        if form.is_valid():
-            article = form.save()
-            return redirect("articles:article_detail", article.pk)
+    if article.author == request.user:  # 작성자만 수정 가능 
+        if request.method == "POST":
+            form = ArticleForm(request.POST, instance=article)
+            if form.is_valid():
+                article = form.save()
+                return redirect("articles:article_detail", article.pk)
+        else:
+            form = ArticleForm(instance=article)  # article의 값을 가지는 객체로 채워진 Form
+        context = {
+            "form": form,
+            "article": article,
+        }
+        return render(request, "articles/update.html", context)
     else:
-        form = ArticleForm(instance=article)  # article의 값을 가지는 객체로 채워진 Form
-    context = {
-        "form": form,
-        "article": article,
-    }
-    return render(request, "articles/update.html", context)
+        return redirect("articles:articles")
 
 @require_POST
 def delete(request, pk):
+    article = get_object_or_404(Article, pk=pk)
     if request.user.is_authenticated:  # 로그인이 된 상태여야만 삭제 가능 
-        # Article에 저장된 목록 중에 pk==pk 인 글 가져오기
-        article = get_object_or_404(Article, pk=pk)
-        article.delete()
+        if article.author == request.user:  # 작성자만 글 삭제 가능 
+            # Article에 저장된 목록 중에 pk==pk 인 글 가져오기
+            article = get_object_or_404(Article, pk=pk)
+            article.delete()
     return redirect("articles:articles")
 
 @require_POST
@@ -79,21 +86,24 @@ def comment_create(request, pk):
     if form.is_valid():
         comment = form.save(commit=False)  # instance를 생성하지만 바로 DB에 저장되지 않도록 commit=False 
         comment.article = article
+        comment.user = request.user  # 댓글 작성자 추가 
         comment.save()
     return redirect("articles:article_detail", article.pk)
 
 @require_POST
 def comment_delete(request, pk, comment_pk):
-    comment = get_object_or_404(Comment, pk=comment_pk)
-    comment.delete()
+    if request.user.is_authenticated:
+        comment = get_object_or_404(Comment, pk=comment_pk)
+        if comment.user == request.user:
+            comment.delete()
     return redirect("articles:article_detail", pk)
 
 def data_throw(request):
     return render(request, "articles/data-throw.html")
 
 def data_catch(request):
-    message = request.GET.get("message")
+    data = request.GET.get("message")
     context = {
-        "message": message,
+        "data": data,
     }
     return render(request, "articles/data-catch.html", context)

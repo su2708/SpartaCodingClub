@@ -1,50 +1,59 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Article Detail</h1>
-
-    <h3>제목: {{ article.title }}</h3>
+    <h2>Article Detail</h2>
+    <p>Title: {{ article.title }}</p>
+    <p>Author: {{ article.author.username }}</p>
 
     {% if article.image %}
         <img src="{{ article.image.url }}">
     {% endif %}
+
     <p>내용: {{ article.content }}</p>
     <p>작성일시: {{ article.created_at }}</p>
     <p>수정일시: {{ article.updated_at }}</p>
 
     <br/>
     <br/>
-    
-    <a href="{% url 'articles:articles' %}">목록보기</a><br/>
-    <a href="{% url 'articles:update' article.pk %}"><button>수정</button></a>
-    
-    <br/>
-    
-    <form action="{% url 'articles:delete' article.pk %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="삭제">
-    </form>
 
+    <a href="{% url 'articles:articles' %}">목록보기</a><br/>
+
+    {% if user == article.author %}
+        <a href="{% url 'articles:update' article.pk %}"><button>수정</button></a>
+
+        <br/>
+        
+        <form action="{% url 'articles:delete' article.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="삭제">
+        </form>
+    {% endif %}
+    
     <br/>
     <hr/>
 
     <h3>댓글 {{ comments|length }}개</h3>
+    
+    {% if request.user.is_authenticated %}
 
-    <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
-        {% csrf_token %}
-        {{ comment_form.as_p }}
-        <input type="submit" value="작성">
-    </form>
+        <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <input type="submit" value="작성">
+        </form>
+    {% endif %}
 
-    <ul>
-        {% for comment in comments %}
-            <li>
-                <p>{{ comment.content }}</p>
+    {% for comment in comments %}
+        <ul>
+            <li>{{ comment.content }} - {{ comment.user.username }}</li>
+
+            {% if user == comment.user %}
                 <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method="POST">
                     {% csrf_token %}
                     <input type="submit" value="삭제">
                 </form>
-            </li>
-        {% endfor %}
-    </ul>
+            {% endif %}
+        </ul>
+    {% endfor %}
+
 {% endblock content %}
