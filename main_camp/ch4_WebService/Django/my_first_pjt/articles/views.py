@@ -1,4 +1,4 @@
-from .models import Article
+from .models import Article, Comment
 from .forms import ArticleForm, CommentForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -22,9 +22,12 @@ def article_detail(request, pk):
     # Article에 저장된 목록 중에 pk==pk인 글 가져오기
     # 없으면 404 error
     article = get_object_or_404(Article, pk=pk)
-
+    comment_form = CommentForm()  # 댓글 폼 
+    comments = article.comments.all()  # 댓글 보여주기 
     context = {
         "article": article,
+        "comment_form": comment_form,
+        "comments": comments,
     }
 
     return render(request, "articles/article_detail.html", context)
@@ -78,6 +81,12 @@ def comment_create(request, pk):
         comment.article = article
         comment.save()
     return redirect("articles:article_detail", article.pk)
+
+@require_POST
+def comment_delete(request, pk, comment_pk):
+    comment = get_object_or_404(Comment, pk=comment_pk)
+    comment.delete()
+    return redirect("articles:article_detail", pk)
 
 def data_throw(request):
     return render(request, "articles/data-throw.html")

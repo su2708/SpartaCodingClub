@@ -18,7 +18,9 @@ class Article(models.Model):
 
 # 작성하는 댓글에 대한 모델
 class Comment(models.Model):
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)  # Article이 사라지면 이 댓글도 삭제된다는 옵션
+    article = models.ForeignKey(
+        Article, on_delete=models.CASCADE, related_name="comments"
+    )
     content = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -28,6 +28,8 @@
     <br/>
     <hr/>
 
+    <h3>댓글 {{ comments|length }}개</h3>
+
     <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
         {% csrf_token %}
         {{ comment_form.as_p }}
@@ -38,6 +40,10 @@
         {% for comment in comments %}
             <li>
                 <p>{{ comment.content }}</p>
+                <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="삭제">
+                </form>
             </li>
         {% endfor %}
     </ul>
