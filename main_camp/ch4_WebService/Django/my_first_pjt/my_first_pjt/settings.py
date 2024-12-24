@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "articles",
     "users",
     "accounts",
+    "fontawesomefree",
 ]
 
 MIDDLEWARE = [

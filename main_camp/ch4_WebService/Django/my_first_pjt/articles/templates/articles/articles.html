@@ -20,11 +20,13 @@
         </a>
         <form action="{% url 'articles:like' article.pk %}" method="POST">
             {% csrf_token %}
-            {% if user in article.like_users.all %}
-                <input type="submit" value="좋아요 취소">
-            {% else %}
-                <input type="submit" value="좋아요">
-            {% endif %}
+            <button class="btn btn-link text-danger">
+                {% if user in article.like_users.all %}
+                    <i class="fa-solid fa-heart"></i>
+                {% else %}
+                    <i class="fa-regular fa-heart"></i>
+                {% endif %}
+            </button>
         </form>
         <br/>
     {% endfor %}
