@@ -98,6 +98,19 @@ def comment_delete(request, pk, comment_pk):
             comment.delete()
     return redirect("articles:article_detail", pk)
 
+@require_POST
+def like(request, pk):
+    if request.user.is_authenticated:
+        article = get_object_or_404(Article, pk=pk)
+        if article.like_users.filter(pk=request.user.pk).exists():
+            article.like_users.remove(request.user)
+        else:
+            article.like_users.add(request.user)
+    else:
+        return redirect("accounts:login")
+    
+    return redirect("articles:articles")
+
 def data_throw(request):
     return render(request, "articles/data-throw.html")
 

@@ -19,6 +19,7 @@ urlpatterns = [
         views.comment_delete,
         name="comment_delete"
     ),  # 댓글 삭제 
+    path("<int:pk>/like/", views.like, name="like"),  # 좋아요 
     #
     path("index/", views.index, name="index"),
     # data

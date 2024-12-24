@@ -1,8 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{ username }} Profile Page</h1>
-    <p> username : {{ username }} </p>
+    <h1>{{ member.username }} Profile Page</h1>
+    <div>
+        <h2>username: {{ member.username}}</h2>
+        <p>
+            팔로워 : {{ member.followers.count }}명
+            팔로잉 : {{ member.following.count }}명
+        </p>
+    </div>
+
+    {% if request.user != member %}
+        <div>
+            <form action="{% url 'users:follow' member.pk %}" method="POST">
+                {% csrf_token %}
+                {% if request.user in member.followers.all %}
+                    <button type="submit">Unfollow</button>
+                {% else %}
+                    <button type="submit">Follow</button>
+                {% endif %}
+            </form>
+        </div>
+    {% endif %}
 
     <a href="/index/">홈으로 돌아가기</a>
 {% endblock content %}
