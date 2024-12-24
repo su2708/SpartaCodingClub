@@ -18,9 +18,11 @@ def profile(request, username):
 
 @require_POST
 def follow(request, user_pk):
+    # request.user == "현재 로그인한 사람"
+	# member == "누군가의 프로필"
     if request.user_is_authenticated:
         member = get_object_or_404(get_user_model(), pk=user_pk)
-        if request.user != member:
+        if request.user != member:  # 자기 자신을 팔로우하는 경우 제외 
             if request.user in member.followers.all():
                 member.followers.remove(request.user)
             else:
