@@ -1,5 +1,8 @@
 from django.http import HttpResponse, JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from django.core import serializers
+from .serializers import ArticleSerializer
 from django.shortcuts import render
 from .models import Article
 
@@ -31,3 +34,9 @@ def json_02(request):
     articles = Article.objects.all()
     res_data = serializers.serialize("json", articles)
     return HttpResponse(res_data, content_type="application/json")
+
+@api_view(["GET"])
+def json_drf(request):
+    articles = Article.objects.all()
+    serializer = ArticleSerializer(articles, many=True)  # many=True: 여러개 받겠다 
+    return Response(serializer.data)
