@@ -1,6 +1,7 @@
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,6 +10,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Article, Comment
 
 class ArticleListAPIView(APIView):
+    permission_classes = [IsAuthenticated]  # jwt 인증 
+    
     def get(self, request):
         # 1. article들을 다 가져오기 
         articles = Article.objects.all()
@@ -26,6 +29,8 @@ class ArticleListAPIView(APIView):
 
 
 class ArticleDetailAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+    
     def get_object(self, pk):
         return get_object_or_404(Article, pk=pk)
 
@@ -49,6 +54,8 @@ class ArticleDetailAPIView(APIView):
 
 
 class CommentListAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+    
     def get(self, request, article_pk):
         article = get_object_or_404(Article, pk=article_pk)
         comments = article.comments.all()
@@ -64,6 +71,8 @@ class CommentListAPIView(APIView):
 
 
 class CommentDetailAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+    
     def get_object(self, comment_pk):
         return get_object_or_404(Comment, pk=comment_pk)
     
