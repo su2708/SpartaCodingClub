@@ -16,4 +16,5 @@ urlpatterns = [
         views.CommentDetailAPIView.as_view(),
         name="comment_detail"
     ),
+    path("check-sql/", views.check_sql, name="check_sql"),
 ]

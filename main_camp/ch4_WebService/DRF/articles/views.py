@@ -88,3 +88,13 @@ class CommentDetailAPIView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+
+@api_view(["GET"])
+def check_sql(request):
+
+    comments = Comment.objects.all().prefetch_related("article")
+    for comment in comments:
+        print(comment.article.title)
+
+
+    return Response()
