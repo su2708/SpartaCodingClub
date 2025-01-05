@@ -1,3 +1,5 @@
+annotated-types==0.7.0
+anyio==4.8.0
 asgiref==3.8.1
 asttokens==3.0.0
 attrs==24.3.0
@@ -7,6 +9,7 @@ certifi @ file:///C:/b/abs_59o0xj7aav/croot/certifi_1734473304008/work/certifi
 charset-normalizer @ file:///croot/charset-normalizer_1721748349566/work
 colorama==0.4.6
 decorator==5.1.1
+distro==1.9.0
 Django==4.2.1
 django-extensions==3.2.3
 django-redis==5.4.0
@@ -19,19 +22,26 @@ executing==2.1.0
 Faker==33.1.0
 fontawesomefree==6.6.0
 gprof2dot==2024.6.6
+h11==0.14.0
+httpcore==1.0.7
+httpx==0.28.1
 idna @ file:///C:/b/abs_aad84bnnw5/croot/idna_1714398896795/work
 inflection==0.5.1
 ipython==8.30.0
 jedi==0.19.2
+jiter==0.8.2
 jsonschema==4.23.0
 jsonschema-specifications==2024.10.1
 matplotlib-inline==0.1.7
+openai==1.59.3
 parso==0.8.4
 pillow==11.0.0
 prompt_toolkit==3.0.48
 psycopg2==2.9.10
 pure_eval==0.2.3
 pycodestyle==2.12.1
+pydantic==2.10.4
+pydantic_core==2.27.2
 Pygments==2.18.0
 PyJWT==2.10.1
 PySocks @ file:///C:/ci_311/pysocks_1676425991111/work
@@ -42,9 +52,11 @@ referencing==0.35.1
 requests @ file:///C:/b/abs_c3508vg8ez/croot/requests_1731000584867/work
 rpds-py==0.22.3
 six==1.17.0
+sniffio==1.3.1
 sqlparse==0.5.3
 stack-data==0.6.3
 toposort==1.10
+tqdm==4.67.1
 traitlets==5.14.3
 typing_extensions==4.12.2
 tzdata==2024.2
